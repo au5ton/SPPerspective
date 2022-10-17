@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class SPPerspective {
+public final class SPPerspective {
   public static func makeTransForm(with config: SPPerspectiveStaticConfig) -> CATransform3D {
     let transform = makeTransform(corner: config.corner, distortion: config.distortionPerspective, angle: config.angle, step: config.vectorStep)
     

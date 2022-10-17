@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+//import SPPerspective
 
 @main
 struct ExampleApp: App {
+  //let temp = SPPerspective.makeTransForm(with: .iOS14WidgetStatic)
   var body: some Scene {
     WindowGroup {
       Text("Hello")
