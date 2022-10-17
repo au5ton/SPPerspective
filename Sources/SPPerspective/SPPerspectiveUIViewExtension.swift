@@ -168,6 +168,12 @@ public extension UIView {
     
     // MARK: - Makers
     
+  public static func makeTransForm(with config: SPPerspectiveStaticConfig) -> CATransform3D {
+    let transform = makeTransform(corner: config.corner, distortion: config.distortionPerspective, angle: config.angle, step: config.vectorStep)
+    
+    return transform
+  }
+  
     /**
      SPPerspective: Create tranform by `corner`, distortion
      angle in degres and vector values.
@@ -177,7 +183,7 @@ public extension UIView {
      - parameter angle: Rotation in degress by vector.
      - parameter step: Value of range between steps.
      */
-    fileprivate func makeTransform(corner: SPPerspectiveHighlightCorner, distortion: CGFloat, angle: CGFloat, step: CGFloat) -> CATransform3D {
+    public func makeTransform(corner: SPPerspectiveHighlightCorner, distortion: CGFloat, angle: CGFloat, step: CGFloat) -> CATransform3D {
         let vector = makeVector(for: corner, step: step)
         return makeTransform(distortion: distortion, angle: angle, vector: vector)
     }
@@ -190,7 +196,7 @@ public extension UIView {
      - parameter angle: Rotation in degress by vector.
      - parameter vector: Vector of dicection for transform.
      */
-    fileprivate func makeTransform(distortion: CGFloat, angle: CGFloat, vector: SPPerspectiveVector) -> CATransform3D {
+    public func makeTransform(distortion: CGFloat, angle: CGFloat, vector: SPPerspectiveVector) -> CATransform3D {
         var rotationAndPerspectiveTransform : CATransform3D = CATransform3DIdentity
         rotationAndPerspectiveTransform.m34 = 1.0 / distortion
         rotationAndPerspectiveTransform = CATransform3DRotate(
